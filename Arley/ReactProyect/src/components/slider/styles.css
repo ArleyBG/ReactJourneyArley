@@ -1,0 +1,60 @@
+#app {
+  height: 100%;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #000;
+  font-size: 14px;
+}
+
+.swiper {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: auto;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 17 / 10;
+  object-fit: cover;
+}
+
+.name-product {
+  margin: 10px 10px;
+}
+
+.valor-product {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .name-product {
+    font-size: 12px;
+  }
+  .valor-product {
+    font-size: 12px;
+  }
+}

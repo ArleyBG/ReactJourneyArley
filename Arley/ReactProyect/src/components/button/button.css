@@ -1,0 +1,27 @@
+.container-img {
+    position: relative;
+}
+
+.icono {
+    font-size: 40px;
+    margin-bottom: 3px;
+}
+
+.add-button {
+    position: absolute;
+    bottom: 0;
+    right: 2%;
+    cursor: pointer;
+    background: none;
+    color: #ffff;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .icono {
+        font-size: 30px;
+    }
+}
+  
+
+
