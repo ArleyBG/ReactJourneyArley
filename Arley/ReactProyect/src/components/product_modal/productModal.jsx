@@ -3,24 +3,29 @@ import './productModal.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
+// Comoponente que muestra un modal con los detalles del producto seleccionado
 const ProductModal = ({ product, offModal }) => {
-  	const [quantity, setQuantity] = useState(1);
-	const [ingredients, setIngredients] = useState(product.ingredientes || []);
-	const [total, setTotal] = useState(product.valor);
-	const [accordion, setAccordion] = useState(true);
+  	const [quantity, setQuantity] = useState(1); // cantidad producto
+	const [ingredients, setIngredients] = useState(product.ingredientes || []); // Lista de ingredientes 
+	const [total, setTotal] = useState(product.valor); // total del producto
+	const [accordion, setAccordion] = useState(true); // visibilidad del contenido del acordeon
 
+	// Funciones
+	// Incrementar la cantidad y actualizar el total
 	const increment = () => {
 		setQuantity(quantity + 1);
 		setTotal(total + product.valor);
 	}
-
+	 
+	// Disminuir la cantidad y actualizar el total
 	const decrement = () => {
 		if (quantity > 1) {
 			setQuantity(quantity - 1);
 			setTotal(total - product.valor);
 		}
 	}
-
+	
+	// Añadir o eliminar el listado de ingredientes
 	const addIngredient = (ingredient) => {
 		if (ingredients.includes(ingredient)) {
 			setIngredients(ingredients.filter((i) => i !== ingredient));
@@ -29,21 +34,26 @@ const ProductModal = ({ product, offModal }) => {
 		}
 	};
 
+	// Cerrar Modal
 	const addProductAndContinue = () => {
 		alert("Producto añadido al carrito")
 		offModal();
 	};
-
+ 
+	// Cerrar modal
 	const addProductAndPay = () => {
 		alert("Ir a pagar")
 		offModal();
 	};
 
+	// visibilidad del accordeon
 	const toggleAccordion = () => {
 		setAccordion(!accordion);
 	}
 
+	// Renderizado
 	return (
+		// Detalles del producto
 		<div className="modal">
 			<div className='modal-content'>
 				<div className='modal-header'>
@@ -59,6 +69,8 @@ const ProductModal = ({ product, offModal }) => {
 					<div className='product-ingredients'>
 						<p className='product-valor'><strong>$ {product.valor}</strong></p>
 						<p className='product-description'>{product.descripcion}</p>
+
+						{/* Personalizar ingredientes y controlar visibilidad del accordeon */}
 						<h4 onClick={toggleAccordion}>
 							Personalizarla:
 							<span>{accordion ? "▲" : "▼"}</span>
@@ -79,6 +91,8 @@ const ProductModal = ({ product, offModal }) => {
 						)}
 					</div>
 				</div>
+				
+				{/* Botones para ajustar las cantidades y agregar el producto al carrito */}
 				<div className='quantity'>
 					<div className='quantity-buttons'> 
 						<button onClick={decrement}>-</button>

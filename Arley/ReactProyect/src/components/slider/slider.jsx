@@ -6,9 +6,13 @@ import './styles.css';
 import { Pagination } from 'swiper/modules';
 import Button from '../button/button';
 
-const Slide = ({ burgers, productClick }) => {
+// Muestra el producto 
+const Slide = ({ burgers, productClick }) => { // props y funcion para manejar el click en cada producto
+
+  // Renderizado
   return (
     <>
+    {/* Cantidad de cards por tamaño de la pantalla */}
       <Swiper
       slidesPerView="2"
       spaceBetween={10}
@@ -43,15 +47,17 @@ const Slide = ({ burgers, productClick }) => {
       }}
         modules={[Pagination]}
         className="mySwiper"
-      > {/* Mapeo al objeto */}
+      > 
+      {/* Mapeo de los productos */}
         {burgers.map((burger) => (
           <SwiperSlide key={burger.id} className="burger-id">
             <div className="description-card"
+              // Manejar el click en el producto
               onClick={() => productClick(burger)} // pasar props a la funcion
             >
               <div className='container-img'>
                 <img src={burger.imagen} alt={burger.nombre} className="img-card" />
-                <Button /> {/* comopenete button agregar producto*/}
+                <Button /> {/* Renderizar componente button para agregar un producto*/}
               </div>
               <h4 className="name-product">{burger.nombre}</h4>
               <p className="valor-product">${burger.valor}</p>
